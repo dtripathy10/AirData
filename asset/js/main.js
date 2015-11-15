@@ -50,24 +50,7 @@ $(document).ready(function() {
       return false;
   });
 
-  $(".regioanl-market").click(function() {
 
-      var header = "<tr><th>#</th><th>District Name</th><th>Regioanl Market</th></tr>";
-      var data = "";
-      var selected_location = $('.district-data').val();
-      
-
-      if(window.data[selected_location]) {
-        for (var i = 0; i < window.data[selected_location]['regional_maket'].length; i++) {
-          data += '<tr><td>' + (i+1) + '</td>';
-          data += '<td>' + selected_location + '</td>';
-          data += '<td>' + window.data[selected_location]['regional_maket'][i]+ '</td></tr>';
-        }
-      }
-      $('#district-table-data').html(header+data);
-      //mark the location completed
-      return false;
-  });
 
   $(".population").click(function() {
 

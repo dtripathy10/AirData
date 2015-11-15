@@ -12,17 +12,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: 'partials/distance.html',
             controller: 'distanceController'
         })
-        .state('info.coutry', {
-            url: '/coutry',
-            templateUrl: 'partials/country.html',
-            controller: 'countryController'
+        .state('info.regionalMarket', {
+            url: '/regionalMarket',
+            templateUrl: 'partials/regionalMarket.html',
+            controller: 'RegionalMarketController'
         })
         .state('info.ok', {
             url: '/ok',
             templateUrl: 'partials/ok.html',
             controller: 'okController'
         });
-    $urlRouterProvider.otherwise('/ok');
+    $urlRouterProvider.otherwise('info.regionalMarket');
 });
 
 app.controller('AppController', function($scope, $http) {
@@ -39,9 +39,9 @@ app.controller('infoController', function($scope, $http) {
 app.controller('distanceController', function($scope, $http, $location) {
 });
 
-app.controller('countryController', function($scope, $http) {
+app.controller('RegionalMarketController', function($scope, $http) {
 
-  var okm = [];
+  lok_p = [];
   var counter = 1;
   for (var key in data) {
        if (data.hasOwnProperty(key)) {
@@ -49,23 +49,48 @@ app.controller('countryController', function($scope, $http) {
           tempObject["id"] = counter;
           counter++;
           tempObject["name"] = key;
-          okm.push(tempObject);
+          lok_p.push(tempObject);
         }
   }
 
-  $scope.data = {
-    repeatSelect: null,
-    availableOptions: okm,
-   };
+  $scope.data = lok_p;
 
-  $scope.findRM = function() {
-    alert(data.repeatSelect);
+  $scope.form = {type : $scope.data[0].name};
+
+  $scope.names = [];
+
+  $scope.selectAction = function() {
+    $scope.names = [];
+    var _counter = 1;
+    if(window.data[$scope.form.type.name]) {
+        for (var i = 0; i < data[$scope.form.type.name]['regional_maket'].length; i++) {
+          var _tempObject1 = {};
+          _tempObject1["id"] = _counter;
+          _counter++;
+          _tempObject1["regional_maket"] = data[$scope.form.type.name]['regional_maket'][i];
+          _tempObject1["district_name"] = $scope.form.type.name;
+          $scope.names.push(_tempObject1);
+        }
+      }
+    console.log($scope.form.type);
   };
 
   $scope.findAllRM = function() {
-
+    $scope.names = [];
+    var _counter = 1;
+       for (var key in window.data) {
+          for (var i = 0; i < window.data[key]['regional_maket'].length; i++) {
+          var _tempObject1 = {};
+            _tempObject1["id"] = _counter;
+            _counter++;
+            _tempObject1["regional_maket"] = data[key]['regional_maket'][i];
+            _tempObject1["district_name"] = key;
+            $scope.names.push(_tempObject1);
+        }
+      }
+    console.log($scope.form.type);
   };
-
+  $scope.findAllRM();
 });
 
 app.controller('okController', function($scope, $rootScope) {

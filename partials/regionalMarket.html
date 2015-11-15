@@ -1,0 +1,18 @@
+  <form class="form-inline big-spacer">
+
+    <select class="form-control" ng-model="form.type" ng-options="item.name for item in data" ng-change="selectAction()">
+        <option>--</option>
+    </select>
+
+    <button class="btn btn-success" ng-click="findAllRM()">Find All RM</button>
+  </form>
+
+<table class="table" id="district-table-data">
+  <tr><th>#</th><th>District Name</th><th>Regioanl Market</th></tr>
+  <tr ng-repeat="row in names">
+    <td>{{ row.id }}</td>
+    <td>{{ row.district_name }}</td>
+    <td>{{ row.regional_maket }}</td>
+  </tr>
+
+</table>
