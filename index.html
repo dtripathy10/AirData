@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Leadx Platform</title>
+  <!-- External Dependecy -->
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap-3.3.5-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../css/bootcards-1.1.2/dist/css/bootcards-desktop.min.css">
+
+  <!-- customized CSS -->
+  <link rel="stylesheet" type="text/css" href="css/leadx-platform.css">
+
+  <!-- External Dependecy -->
+  <script src="../../js/angular/angular.min.js"></script>
+  <script src="../../js/angular/ui-router-master/release/angular-ui-router.min.js"></script>
+  <script src="../../js/jquery-1.11.3.min.js"></script>
+  <script src="../../css/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+
+
+</head>
+<body ng-app="myApp" ng-c>
+
+
+<div class="lead-app">
+      <div class="leadx-sidebar">
+        <ul class="nav nav-stacked leadx-sidebar-menu">
+            <li ><a ui-sref="dashBoard.cardLayout"><span class="glyphicon glyphicon-stats 
+white"></span></a></li>
+            <li ><a ui-sref="dashBoard.listLayout"> <span class="glyphicon glyphicon-road white
+"></span></a></li>
+         </ul>
+      </div>
+
+    <div class="lead-page">
+    <div class="navbar leadx-navbar">
+              <ul class="nav navbar-nav navbar-header">
+                <li ><a ui-sref="dashBoard.cardLayout">LeadX Platform</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown" >
+                  <a href="#" ng-if="$root.currentUser==undefined" class="dropdown-toggle disabled" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile<span class="caret"></span></a>
+
+                   <a href="#" ng-if="$root.currentUser != undefined" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{$root.currentUser.email}}<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a ui-sref="profile">Setting</a></li>
+                    <li><a ui-sref="logout">Sign Out</a></li>
+                  </ul>
+                </li>
+              </ul>
+          </div>
+      <div class="data" ui-view></div>
+</div>
+
+
+  <!-- Custom Javascript -->
+  <script src="js/leadx-platform.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AirData</title>
+
+  <!-- Google map dependency-->
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+
+  <!-- External Dependecy -->
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+  <!-- customized CSS -->
+  <link rel="stylesheet" type="text/css" href="asset/css/main.css">
+
+  <!-- External Dependecy -->
+  <script src="asset/js/angular/angular.min.js"></script>
+  <script src="asset/js/angular/ui-router-master/release/angular-ui-router.min.js"></script>
+  <script src="asset/js/jquery-1.11.3.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="asset/js/data.js"></script>
+  <script src="asset/js/main.js"></script>
+    
+  </head>
+  
+<body   ng-app="myApp"  ng-controller="AppController">
+
+ <nav class="navbar navbar-fixed-top">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand white" href="#">AirData</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a class="white" ui-sref="ok">Dashboard</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+    </nav>
+    <div class="main">
+      <div id="map-canvas"></div>
+      <div class="data" ui-view></div>
+   </div>
+
+  <script src="asset/js/air-data.js"></script>
+  </body>
+</html>
